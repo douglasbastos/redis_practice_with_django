@@ -7,7 +7,4 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('acrux_blog.urls')),
-    url(r'^', include('acruxtable.urls')),
-    url(r'^ranking', include('ranking_real_time.urls')),
 ]

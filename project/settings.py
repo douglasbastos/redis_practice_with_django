@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'livramento',
+        'NAME': 'redis_practice',
         'USER': 'root',
         'PASSWORD': '',
     }

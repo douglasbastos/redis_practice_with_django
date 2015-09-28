@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ranking_real_time'
+    'ranking_real_time',
+    'acrux_blog'
 )
 
 MIDDLEWARE_CLASSES = (

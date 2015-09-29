@@ -10,4 +10,5 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ranking/', include('ranking_real_time.urls')),
+    url(r'^blog/', include('acrux_blog.urls')),
 ]

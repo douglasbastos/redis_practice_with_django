@@ -112,10 +112,3 @@ REDIS_DB = {
 STATIC_URL = '/static/'
 
 GRAPPELLI_ADMIN_TITLE='REDIS'
-
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '/var/run/redis/redis.sock',
-    },
-}

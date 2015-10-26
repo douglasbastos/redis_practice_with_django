@@ -11,5 +11,6 @@ urlpatterns = [
     url('^admin/', include(admin.site.urls)),
     url('^ranking/', include('ranking_real_time.urls')),
     url('^blog/', include('acrux_blog.urls')),
+    url('^votacao/', include('votacao_with_redis.urls')),
     url('^grappelli/', include('grappelli.urls')),
 ]

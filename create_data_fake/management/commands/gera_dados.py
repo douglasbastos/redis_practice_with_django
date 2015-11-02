@@ -5,6 +5,7 @@ from random import choice
 from create_data_fake.views import generator_string_by_range
 from django.contrib.auth.models import User
 from acrux_blog.models import Tag, Post
+from ranking_real_time.models import Player
 from create_data_fake import content
 # from optparse import make_option
 
@@ -27,7 +28,8 @@ class Command(BaseCommand):
 
     def generate_users(self):
         for i in range(0, self.quantity):
-            mommy.make(User, username=generator_string_by_range())
+            user = mommy.make(User, username=generator_string_by_range())
+            mommy.make(Player, username=user, pontos=1000)
 
     def generate_posts(self):
         for i in range(0, self.quantity):

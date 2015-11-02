@@ -38,7 +38,14 @@ class Command(BaseCommand):
             mommy.make(Post, title=titulo, content=text, author=author, tag=tag)
 
     def handle(self, **options):
-        self.model = options['model']
+        model = options['model']
         self.quantity = int(options['quantity'])
 
-        self.generate_posts()
+        if model == 'User':
+            self.generate_users()
+        elif model == 'Tag':
+            self.generate_tags()
+        elif model == 'Post':
+            self.generate_posts()
+        else:
+            print 'Model not found'

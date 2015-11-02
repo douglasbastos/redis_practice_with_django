@@ -20,14 +20,12 @@ class Command(BaseCommand):
     def generate_tags(self):
         from acrux_blog.models import Tag
         for i in range(0, self.quantity):
-            mommy.make(Tag, name=generator_string_by_range())
+            mommy.make(Tag, name=generator_string_by_range(min=4, max=15))
 
     def handle(self, **options):
-        # model = options['model']
-        # quantity = options['quantity']
+        self.model = options['model']
+        self.quantity = int(options['quantity'])
 
-        self.model = 'Tag'
-        self.quantity = 5
         self.generate_tags()
 
 

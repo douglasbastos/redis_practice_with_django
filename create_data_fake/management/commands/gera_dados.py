@@ -22,11 +22,13 @@ class Command(BaseCommand):
         for i in range(0, self.quantity):
             mommy.make(Tag, name=generator_string_by_range(min=4, max=15))
 
+    def generate_users(self):
+        from django.contrib.auth.models import User
+        for i in range(0, self.quantity):
+            mommy.make(User, username=generator_string_by_range())
+
     def handle(self, **options):
         self.model = options['model']
         self.quantity = int(options['quantity'])
 
-        self.generate_tags()
-
-
-        import ipdb; ipdb.set_trace()
+        self.generate_posts()

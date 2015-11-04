@@ -1,6 +1,7 @@
 Django==1.8
 MySQL-python==1.2.5
 redis==2.10.3
+django-redis-cache==1.6.3
 wsgiref==0.1.2
 django-grappelli==2.7.1
 model-mommy==1.2.5.1

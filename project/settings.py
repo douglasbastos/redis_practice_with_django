@@ -100,6 +100,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+TIME_CACHE = 60 * 10
+
 REDIS_DB = {
     'host': '127.0.0.1',
     'port': 6379,
@@ -111,7 +113,7 @@ CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
         'LOCATION': '127.0.0.1:6379',
-        'TIMEOUT': 60*10,
+        'TIMEOUT': TIME_CACHE,
         'OPTIONS': {
             'DB': 1,
         },

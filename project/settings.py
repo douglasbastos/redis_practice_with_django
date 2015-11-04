@@ -107,6 +107,16 @@ REDIS_DB = {
     'db': 0
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'TIMEOUT': 60*10,
+        'OPTIONS': {
+            'DB': 1,
+        },
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

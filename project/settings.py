@@ -100,6 +100,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+TIME_CACHE = 60 * 10
+
 REDIS_DB = {
     'host': '127.0.0.1',
     'port': 6379,
@@ -107,6 +109,16 @@ REDIS_DB = {
     'db': 0
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'TIMEOUT': TIME_CACHE,
+        'OPTIONS': {
+            'DB': 1,
+        },
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

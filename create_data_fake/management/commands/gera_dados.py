@@ -1,4 +1,5 @@
 # coding: utf-8
+import sys
 from django.core.management.base import BaseCommand
 from model_mommy import mommy
 from random import choice
@@ -22,14 +23,20 @@ class Command(BaseCommand):
         parser.add_argument('-q', dest='quantity',
                             default='', help='Set quantity of inserted items')
 
+    def logger(self, atual, total):
+        sys.stdout.write('Criando {} de {}\r'.format(atual, total))
+        sys.stdout.flush()
+
     def generate_tags(self):
         for i in range(0, self.quantity):
             mommy.make(Tag, name=generator_string_by_range(min=4, max=15, space=True))
+            self.logger(i+1, self.quantity)
 
     def generate_users(self):
         for i in range(0, self.quantity):
             user = mommy.make(User, username=generator_string_by_range())
             mommy.make(Player, username=user, pontos=1000)
+            self.logger(i+1, self.quantity)
 
     def generate_posts(self):
         for i in range(0, self.quantity):
@@ -38,6 +45,7 @@ class Command(BaseCommand):
             author = choice(User.objects.all()[:50])
             tag = choice(Tag.objects.all())
             mommy.make(Post, title=titulo, content=text, author=author, tag=tag)
+            self.logger(i+1, self.quantity)
 
     def handle(self, **options):
         model = options['model']
@@ -51,3 +59,4 @@ class Command(BaseCommand):
             self.generate_posts()
         else:
             print 'Model not found'
+        print 'Todos registros cadastrados com sucesso'

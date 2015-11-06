@@ -1,5 +1,7 @@
 # coding: utf-8
+from __future__ import division
 import sys
+import time
 from django.core.management.base import BaseCommand
 from model_mommy import mommy
 from random import choice
@@ -9,6 +11,10 @@ from acrux_blog.models import Tag, Post
 from ranking_real_time.models import Player
 from create_data_fake import content
 # from optparse import make_option
+
+# PROGRESS_BAR_BLOCKS = [
+#     ' ', '▏', '▎', '▎', '▍', '▍', '▌', '▌', '▋', '▋', '▊', '▊', '▉', '▉', '█',
+# ]
 
 
 class Command(BaseCommand):
@@ -24,8 +30,8 @@ class Command(BaseCommand):
                             default='', help='Set quantity of inserted items')
 
     def logger(self, atual, total):
-        sys.stdout.write('Criando {} de {}\r'.format(atual, total))
         sys.stdout.flush()
+        sys.stdout.write('{:.2f}%\r'.format(atual/total*100))
 
     def generate_tags(self):
         for i in range(0, self.quantity):
@@ -48,6 +54,7 @@ class Command(BaseCommand):
             self.logger(i+1, self.quantity)
 
     def handle(self, **options):
+        time_init = time.time()
         model = options['model']
         self.quantity = int(options['quantity'])
 
@@ -59,4 +66,6 @@ class Command(BaseCommand):
             self.generate_posts()
         else:
             print 'Model not found'
-        print 'Todos registros cadastrados com sucesso'
+        time_total = time.time() - time_init
+        print '{:.2f}seg / {} registros cadastrados com sucesso'\
+            .format(time_total, self.quantity)

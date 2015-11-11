@@ -5,6 +5,7 @@ django-redis-cache==1.6.3
 wsgiref==0.1.2
 django-grappelli==2.7.1
 model-mommy==1.2.5.1
+python-memcached==1.57
 https://github.com/douglasbastos/ranking_real_time/archive/master.zip
 https://github.com/douglasbastos/acrux_blog/archive/master.zip
 https://github.com/douglasbastos/votacao_with_redis/archive/master.zip

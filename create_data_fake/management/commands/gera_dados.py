@@ -35,23 +35,32 @@ class Command(BaseCommand):
 
     def generate_tags(self):
         for i in range(0, self.quantity):
-            mommy.make(Tag, name=generator_string_by_range(min=4, max=15, space=True))
-            self.logger(i+1, self.quantity)
+            try:
+                mommy.make(Tag, name=generator_string_by_range(min=4, max=15, space=True))
+                self.logger(i+1, self.quantity)
+            except:
+                continue
 
     def generate_users(self):
         for i in range(0, self.quantity):
-            user = mommy.make(User, username=generator_string_by_range())
-            mommy.make(Player, username=user, pontos=1000)
-            self.logger(i+1, self.quantity)
+            try:
+                user = mommy.make(User, username=generator_string_by_range())
+                mommy.make(Player, username=user, pontos=1000)
+                self.logger(i+1, self.quantity)
+            except:
+                continue
 
     def generate_posts(self):
         for i in range(0, self.quantity):
-            titulo = generator_string_by_range(min=25, max=55, space=True)
-            text = choice([content.alan_turing, content.george_boole])
-            author = choice(User.objects.all()[:50])
-            tag = choice(Tag.objects.all())
-            mommy.make(Post, title=titulo, content=text, author=author, tag=tag)
-            self.logger(i+1, self.quantity)
+            try:
+                titulo = generator_string_by_range(min=25, max=55, space=True)
+                text = choice([content.alan_turing, content.george_boole])
+                author = choice(User.objects.all()[:50])
+                tag = choice(Tag.objects.all())
+                mommy.make(Post, title=titulo, content=text, author=author, tag=tag)
+                self.logger(i+1, self.quantity)
+            except:
+                continue
 
     def handle(self, **options):
         time_init = time.time()

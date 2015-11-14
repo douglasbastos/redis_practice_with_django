@@ -126,5 +126,6 @@ CACHES = {
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/root/projetofinal/redis_practice_with_django/static/"
 
 GRAPPELLI_ADMIN_TITLE='REDIS'

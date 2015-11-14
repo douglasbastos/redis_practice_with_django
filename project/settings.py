@@ -102,6 +102,8 @@ USE_TZ = True
 
 TIME_CACHE = 60 * 10
 
+DOMAIN = 'www.douglasbastos.com.br'
+
 REDIS_DB = {
     'host': '127.0.0.1',
     'port': 6379,
